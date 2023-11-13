@@ -1,0 +1,61 @@
+<button class="btn btn-primary" style=" margin-left: 100px; margin-top: 20px;"  (click)="toggleAddForm()">Add </button>
+<div *ngIf="showAddForm">
+    <h3>Add New Item</h3>
+    <label>Name:</label>
+    <input [(ngModel)]="newItem.name" placeholder="Name">
+    <label>Username:</label>
+    <input [(ngModel)]="newItem.username" placeholder="Username">
+    <label>Phone:</label>
+    <input [(ngModel)]="newItem.phonenumber" placeholder="Phone">
+    <label>Details:</label>
+    <input [(ngModel)]="newItem.details" placeholder="Phone">
+    <button (click)="addItem()">Add Item</button>
+  
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>phonenumber</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items">
+            <td>{{ item.id }}</td>
+            <td >{{ item.name }}</td>
+            <td>{{ item.username }}</td>
+            <td>{{ item.phonenumber }}</td>
+            <td>
+                <button class="btn btn-primary" style=" margin-right: 20px;" (click)="toggleDetails(item)">
+                    {{ item.showDetails ? 'Hide ' : 'Details' }}
+                  </button>
+          <div *ngIf="item.showDetails">{{ item.details }}</div>
+                <button class="btn btn-danger" style=" margin-right: 20px;" (click)="deleteItem(item)">
+                    Delete
+                </button>
+                <button class="btn btn-warning"  (click)="editItem(item)">Update</button>
+       
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="selectedItem">
+    <h2>Editing Item: {{ selectedItem.name }}</h2>
+    <label>Name:</label>
+    <input [(ngModel)]="selectedItem.name" />
+    <label>username:</label>
+    <input [(ngModel)]="selectedItem.username" />
+
+    <label>phonenumber:</label>
+    <input [(ngModel)]="selectedItem.phonenumber" />
+
+    <label>Details:</label>
+    <input [(ngModel)]="selectedItem.details" />
+    <button (click)="updateItem()">Update</button>
+</div>

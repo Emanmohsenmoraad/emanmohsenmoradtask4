@@ -1,0 +1,15 @@
+table{
+   border-collapse:collapse;
+    width: 800px;
+    height: 200px;
+    margin-top: 50px;
+    margin-left: 100px;
+    background-color: rgb(238, 238, 238);
+    text-align: center;
+}
+table th,td{border: 1px solid black;}
+.btn{
+    border-radius: 2px;
+    width: 100px;
+    height:40px;
+}
